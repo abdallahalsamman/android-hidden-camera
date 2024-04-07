@@ -198,6 +198,7 @@ class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     void takePictureInternal() {
+        try {
         safeToTakePicture = false;
         if (mCamera != null) {
             mCamera.takePicture(null, null, new Camera.PictureCallback() {
@@ -253,6 +254,10 @@ class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
             });
         } else {
             mCameraCallbacks.onCameraError(CameraError.ERROR_CAMERA_OPEN_FAILED);
+            safeToTakePicture = true;
+        }
+        } catch (Exception e) {
+            Log.e("CameraPreview", "takePictureInternal Failed", e);
             safeToTakePicture = true;
         }
     }
