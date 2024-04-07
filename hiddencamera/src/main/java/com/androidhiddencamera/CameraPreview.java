@@ -243,7 +243,7 @@ class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
 
                             try {
                                 mCamera.startPreview();
-                            }  catch (InterruptedException e) {
+                            }  catch (RuntimeException e) {
                                 throw new RuntimeException(e);
                             }
                             safeToTakePicture = true;
