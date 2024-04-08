@@ -259,6 +259,7 @@ class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
         } catch (Exception e) {
             Log.e("CameraPreview", "takePictureInternal Failed", e);
             safeToTakePicture = true;
+            throw e;
         }
     }
 
